@@ -38,18 +38,13 @@
 						<div class="digital-add needs-validation">
 							<div class="row">
 								<div class="form-group col-md-6">
-									<label class="col-form-label pt-0"><span>*</span> Id</label>
+									<label class="col-form-label pt-0"><span>*</span> StudentId</label>
 									<input class="form-control" ng-model="updateUserDetail.id" type="text" disabled required="">
 								</div>
 								<div class="form-group col-md-6">
 									<label class="col-form-label pt-0"><span>*</span> Name</label>
 									<input class="form-control" ng-model="updateUserDetail.name" type="text" required="">
 								</div>
-							</div>
-
-							<div class="form-group">
-								<label class="col-form-label pt-0"><span>*</span> Email</label>
-								<input class="form-control" ng-model="updateUserDetail.email" type="email" required="">
 							</div>
 							<div class="form-group">
 								<label class="col-form-label"><span>*</span>New Password <span style="font-size: 0.6em;">leave blank to not change the password</span></label>

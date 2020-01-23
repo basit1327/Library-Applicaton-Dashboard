@@ -63,7 +63,7 @@
 									<input class="form-control" ng-model="editBookDetail.price" value="150" type="number" required="">
 								</div>
 								<div class="form-group col-md-4">
-									<label class="col-form-label pt-0"><span>*</span> Purchase Date</label>
+									<label class="col-form-label pt-0"><span>*</span> Publish Date</label>
 									<input class="form-control" ng-model="editBookDetail.date" type="date" required="">
 								</div>
 							</div>

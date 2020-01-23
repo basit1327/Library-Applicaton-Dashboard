@@ -38,8 +38,8 @@
 					<div class="card-body">
 						<div class="digital-add needs-validation">
 							<div class="form-group">
-								<label class="col-form-label pt-0"><span>*</span> Email</label>
-								<input class="form-control"  type="email" required="">
+								<label class="col-form-label pt-0"><span>*</span> StaffId</label>
+								<input class="form-control"  type="text" required="">
 							</div>
 							<div class="form-group">
 								<label class="col-form-label pt-0"><span>*</span> Name</label>

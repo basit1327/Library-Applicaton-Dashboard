@@ -95,7 +95,7 @@
 											<td scope="col">Author</td>
 											<td scope="col">Edition</td>
 											<td scope="col">Price</td>
-											<td scope="col">Purchase Date</td>
+											<td scope="col">Publish Date</td>
 											<td scope="col">Added Date</td>
 										</tr>
 										</thead>

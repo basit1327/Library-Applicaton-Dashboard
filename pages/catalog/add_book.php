@@ -77,6 +77,10 @@
 										<option>UnAvailable</option>
 									</select>
 								</div>
+								<div class="form-group col-md-2">
+									<label class="col-form-label pt-0"><span>*</span> Rack/Shelf Number</label>
+									<input class="form-control"  type="number" required="">
+								</div>
 							</div>
 							<div class="form-group pull-right">
 								<div class="product-buttons text-center">

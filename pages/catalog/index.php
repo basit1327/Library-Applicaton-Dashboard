@@ -53,6 +53,7 @@
 									<td scope="col">Author</td>
 									<td scope="col">Edition</td>
 									<td scope="col">Availability</td>
+									<td scope="col">Rack</td>
 									<td scope="col">Action</td>
 								</tr>
 								</thead>
@@ -69,6 +70,7 @@
 											<option>UnAvailable</option>
 										</select>
 									</td>
+									<td class="digits">19</td>
 									<td class="digits">
 										<a href="edit_book.php"><i class="fa fa-edit text-info"></i></a>
 										<a href="#"><i ng-click="deleteBook()" class="fa fa-trash text-danger"></i></a>

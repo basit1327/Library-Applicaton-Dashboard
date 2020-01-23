@@ -30,11 +30,17 @@
 					<div class="card o-hidden widget-cards">
 						<div class="bg-primary card-body" style="background-color: #212123 !important;">
 							<div class="media static-top-widget row">
-								<div class="icons-widgets col-4">
+								<div class="icons-widgets col-2">
 									<div class="align-self-center text-center"><i data-feather="book" class="font-primary" style="color: #212123 !important;"></i></div>
 								</div>
-								<div class="media-body col-8"><span class="m-0">eBooks</span>
-									<h3 class="mb-0"><span id="userCount">{{dashboardStats.ebooks}}</span><small> In Total</small></h3>
+								<div class="media-body col-4"><span class="m-0">eBooks</span>
+									<h3 class="mb-0"><span>{{dashboardStats.ebooks}}</span><small> In Total</small></h3>
+								</div>
+								<div class="icons-widgets col-2">
+									<div class="align-self-center text-center"><i data-feather="book-open" class="font-primary" style="color: #212123 !important;"></i></div>
+								</div>
+								<div class="media-body col-4"><span class="m-0">Catalog</span>
+									<h3 class="mb-0"><span>{{dashboardStats.catalogBooks}}</span><small> In Total</small></h3>
 								</div>
 							</div>
 						</div>

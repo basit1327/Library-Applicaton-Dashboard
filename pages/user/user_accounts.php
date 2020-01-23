@@ -48,9 +48,8 @@
 							<table id="datatable" class="table table-bordernone">
 								<thead>
 								<tr>
-									<th scope="col">ID</th>
+									<th scope="col">StudentId</th>
 									<th scope="col">Name</th>
-									<th scope="col">Email</th>
 									<th scope="col">Created At</th>
 									<th scope="col">Created By</th>
 									<th scope="col">Actions</th>
@@ -66,7 +65,6 @@
 											</div>
 										</div>
 									</td>
-									<td class="digits">randy@mail.com</td>
 									<td class="digits">12-Dec-2018</td>
 									<td class="digits">Martin Axe</td>
 									<td class="digits">
@@ -83,7 +81,6 @@
 											</div>
 										</div>
 									</td>
-									<td class="digits">Marin@mail.com</td>
 									<td class="digits">12-Dec-2018</td>
 									<td class="digits">Martin Axe</td>
 									<td class="digits">
