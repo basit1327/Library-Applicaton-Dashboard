@@ -1,6 +1,6 @@
 <?php require_once ('../partials/header.php') ?>
 
-<div class="page-body" ng-controller="dashboardCTRL">
+<div class="page-body" ng-controller="dashboardCTRL" ng-init="getDashboardStats()">
 		<!-- Container-fluid starts-->
 		<div class="container-fluid">
             <div class="page-header">
@@ -40,7 +40,7 @@
 									<div class="align-self-center text-center"><i data-feather="book-open" class="font-primary" style="color: #212123 !important;"></i></div>
 								</div>
 								<div class="media-body col-4"><span class="m-0">Catalog</span>
-									<h3 class="mb-0"><span>{{dashboardStats.catalogBooks}}</span><small> In Total</small></h3>
+									<h3 class="mb-0"><span>{{dashboardStats.catalog}}</span><small> In Total</small></h3>
 								</div>
 							</div>
 						</div>

@@ -1,5 +1,35 @@
 iukl.controller("bookCTRL", ['$http', '$scope', function(http,sc){
+	sc.eBooksList = [];
+	sc.getEBooksList = async ()=>{
+		try{
+			let serverResponse = await sendServerRequestWithAuthHeader(apiBaseURL+'ebook/get_all',"GET",null,getCookie('sessionId'));
+			if ( serverResponse ){
+				if ( serverResponse.hasOwnProperty('status') ){
+					checkForSessionExpireCall(serverResponse.status);
+					if ( serverResponse.status==200 ){
+						sc.eBooksList= serverResponse.data;
+						sc.$digest();
+						$('#datatable').DataTable({});
+					}
+				}
+				else throw 'Invalid server response';
+			}
+			else throw 'No response by server';
 
+		}
+		catch (e) {
+			swal({
+				title: "Oops",
+				text: "Something not right",
+				icon: "error",
+				button: "Close",
+			});
+		}
+	};
+
+
+
+	//temp
 	sc.editBookDetail={
 		oldISBN:'',
 		newISBN:'',

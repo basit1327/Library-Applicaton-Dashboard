@@ -43,18 +43,29 @@ iukl.controller("mainCTRL", ['$http', '$scope', function(http, sc){
     setTimeout(()=>{
         feather.replace()
     },500);
-    
+
     sc.logout = async ()=>{
         try{
-            swal({
-                title: "Logged out",
-                text: "Redirecting you login",
-                icon: "success",
-                button: null,
-            });
-            setTimeout(()=>{
-                window.location.href='../login.php';
-            },1000);
+            let serverResponse = await sendServerRequestWithAuthHeader(mainServerAddress+logoutURL,"GET",null,getCookie('sessionId'));
+            if ( serverResponse ){
+                if ( serverResponse.hasOwnProperty('status') ){
+                    checkForSessionExpireCall(serverResponse.status);
+                    if ( serverResponse.status==200 ){
+                        swal({
+                            title: "Logged out",
+                            text: "Redirecting you login",
+                            icon: "success",
+                            button: null,
+                        });
+
+                        deleteAllCookies();
+                        window.location.href='../login.php';
+                    }
+                }
+                else throw 'Invalid server response';
+            }
+            else throw 'No response by server';
+
         }
         catch (e) {
             swal({
@@ -65,6 +76,27 @@ iukl.controller("mainCTRL", ['$http', '$scope', function(http, sc){
             });
         }
 
+    };
+
+    (checkIsLoggedIn =>{
+        let sessionId = getCookie('sessionId');
+        if (!sessionId ){
+            window.location.href='../login.php';
+        }
+    })();
+
+
+    sc.formatDate =(date)=>{
+        let dt = new Date(Number(date));
+        console.log(date,dt);
+        if ( dt ){
+            return (dt.getDate()>9?dt.getDate():'0'+dt.getDate()) +'-'+
+                ((dt.getMonth()+1)>9?(dt.getMonth()+1):'0'+(dt.getMonth()+1)) +'-'+
+                dt.getFullYear();
+        }
+        else {
+            return '--';
+        }
     };
 
 }]);

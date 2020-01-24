@@ -1,5 +1,42 @@
 iukl.controller("paperCTRL", ['$http', '$scope', function(http,sc){
+	sc.papersList = [];
+	sc.months = ['-','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+	sc.getPapersList = async ()=>{
+		try{
+			let serverResponse = await sendServerRequestWithAuthHeader(apiBaseURL+'paper/get_all',"GET",null,getCookie('sessionId'));
+			if ( serverResponse ){
+				if ( serverResponse.hasOwnProperty('status') ){
+					checkForSessionExpireCall(serverResponse.status);
+					if ( serverResponse.status==200 ){
+						sc.papersList= serverResponse.data;
+						sc.$digest();
+						$('#datatable').DataTable({});
+					}
+				}
+				else throw 'Invalid server response';
+			}
+			else throw 'No response by server';
 
+		}
+		catch (e) {
+			swal({
+				title: "Oops",
+				text: "Something not right",
+				icon: "error",
+				button: "Close",
+			});
+		}
+	};
+
+
+
+
+
+
+
+
+
+	//temp
 	sc.editBookDetail={
 		oldISBN:'',
 		newISBN:'',

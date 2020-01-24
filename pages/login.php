@@ -101,7 +101,7 @@
 		<div class="avatar"><i class="material-icons">&#xE7FF;</i></div>
 		<h4 class="modal-title">Login to IUKL Pocket Library</h4>
 		<div class="form-group">
-			<input type="email" ng-model="email" class="form-control" placeholder="Email" required="required">
+			<input type="text" ng-model="staffid" class="form-control" placeholder="Staff Id" required="required">
 		</div>
 		<div class="form-group">
 			<input type="password" ng-model="password" class="form-control" placeholder="Password" required="required">
@@ -126,7 +126,6 @@
 <script src="../utils/config.js"></script>
 <script src="../utils/request.js"></script>
 <script src="../utils/cookies.js"></script>
-<script src="../utils/user_roles.js"></script>
 
 <!-- Angular controller for page -->
 <script src="../controllers/loginCTRL.js"></script>

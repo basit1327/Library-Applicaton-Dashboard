@@ -54,38 +54,38 @@
 							<div class="row">
 								<div class="form-group col-md-4">
 									<label class="col-form-label pt-0"><span>*</span> ISBN</label>
-									<input class="form-control"  type="text" required="">
+									<input class="form-control" ng-model="newCatalog.isbn"  type="text" required="">
 								</div>
 								<div class="form-group col-md-4">
 									<label class="col-form-label pt-0"><span>*</span> Title</label>
-									<input class="form-control"  type="text" required="">
+									<input class="form-control" ng-model="newCatalog.title"  type="text" required="">
 								</div>
 								<div class="form-group col-md-4">
 									<label class="col-form-label pt-0"><span>*</span> Author</label>
-									<input class="form-control"  type="text" required="">
+									<input class="form-control" ng-model="newCatalog.author" type="text" required="">
 								</div>
 							</div>
 							<div class="row">
 								<div class="form-group col-md-2">
 									<label class="col-form-label pt-0"><span>*</span> Edition</label>
-									<input class="form-control"  type="number" required="">
+									<input class="form-control" ng-model="newCatalog.edition" type="number" required="">
 								</div>
 								<div class="form-group col-md-2">
 									<label class="col-form-label pt-0"><span>*</span> Availability</label>
-									<select class="form-control">
-										<option>Available</option>
-										<option>UnAvailable</option>
+									<select id="availabilityString" ng-model="newCatalog.availability" class="form-control">
+										<option value="1" select>Available</option>
+										<option value="0">UnAvailable</option>
 									</select>
 								</div>
 								<div class="form-group col-md-2">
 									<label class="col-form-label pt-0"><span>*</span> Rack/Shelf Number</label>
-									<input class="form-control"  type="number" required="">
+									<input class="form-control" ng-model="newCatalog.rack" type="number" required="">
 								</div>
 							</div>
 							<div class="form-group pull-right">
 								<div class="product-buttons text-center">
 									<button type="button" class="btn btn-light">Discard</button>
-									<button type="button" ng-click="add()" class="btn btn-primary">Add</button>
+									<button type="button" ng-click="addNewCatalogBook()" class="btn btn-primary">Add</button>
 								</div>
 							</div>
 						</div>

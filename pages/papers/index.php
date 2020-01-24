@@ -1,6 +1,6 @@
 <?php require_once ('../partials/header.php') ?>
 
-<div class="page-body" ng-controller="paperCTRL">
+<div class="page-body" ng-controller="paperCTRL" ng-init="getPapersList()">
 
 	<!-- top bar starts-->
 	<div class="container-fluid">
@@ -49,27 +49,17 @@
 								<tr>
 									<td scope="col">Subject Code</td>
 									<td scope="col">Title</td>
-									<td scope="col">Semester Name</td>
+									<td scope="col">Semester Month</td>
 									<td scope="col">Year</td>
 									<td scope="col">Action</td>
 								</tr>
 								</thead>
 								<tbody>
-								<tr>
-									<td>DT1</td>
-									<td class="digits" style="font-weight: 600;">Calculas 1</td>
-									<td class="digits"><i class="fa fa-user"></i> BSCS-1</td>
-									<td class="digits"><i class="fa fa-calendar"></i> 2019</td>
-									<td class="digits">
-										<a href="edit_paper.php?id=1"><i class="fa fa-edit text-info"></i></a>
-										<a href="#"><i ng-click="deletePaper()" class="fa fa-trash text-danger"></i></a>
-									</td>
-								</tr>
-								<tr>
-									<td>CS4</td>
-									<td class="digits" style="font-weight: 600;">Discrete Mathmatics</td>
-									<td class="digits"><i class="fa fa-user"></i> MSc P1</td>
-									<td class="digits"><i class="fa fa-calendar"></i> 2019</td>
+								<tr ng-repeat="x in papersList">
+									<td>{{x.subject_code}}</td>
+									<td class="digits" style="font-weight: 600;">{{x.title}}</td>
+									<td class="digits">{{months[x.semestor_month]}}</td>
+									<td class="digits"><i class="fa fa-calendar"></i> {{x.year}}</td>
 									<td class="digits">
 										<a href="edit_paper.php?id=1"><i class="fa fa-edit text-info"></i></a>
 										<a href="#"><i ng-click="deletePaper()" class="fa fa-trash text-danger"></i></a>
@@ -93,8 +83,3 @@
 <!-- Angular controller for page -->
 <script src="../../controllers/paperCTRL.js"></script>
 
-<script>
-	$(document).ready(function() {
-		$('#datatable').DataTable( {} );
-	} );
-</script>

@@ -84,7 +84,6 @@
 <script src="../../assets/js/sweet-alert.min.js"></script>
 
 <!-- Utils -->
-<script src="../../utils/user_roles.js"></script>
 <script src="../../utils/config.js"></script>
 <script src="../../utils/request.js"></script>
 <script src="../../utils/cookies.js"></script>

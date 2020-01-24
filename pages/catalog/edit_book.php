@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="../../assets/css/dropzone.css">
 
 
-<div class="page-body" ng-controller="catalogCTRL">
+<div class="page-body" ng-controller="catalogCTRL" ng-init="getInitialHospitalDetail()">
 
 	<!-- top bar starts-->
 	<div class="container-fluid">
@@ -55,27 +55,31 @@
 							<div class="row">
 								<div class="form-group col-md-4">
 									<label class="col-form-label pt-0"><span>*</span> ISBN</label>
-									<input class="form-control" value="SB512551242322" type="text" required="">
+									<input class="form-control" ng-model="editCatalogBookDetail.isbn" type="text" required="">
 								</div>
 								<div class="form-group col-md-4">
 									<label class="col-form-label pt-0"><span>*</span> Title</label>
-									<input class="form-control" value="Data Structure" type="text" required="">
+									<input class="form-control" ng-model="editCatalogBookDetail.title" type="text" required="">
 								</div>
 								<div class="form-group col-md-4">
 									<label class="col-form-label pt-0"><span>*</span> Author</label>
-									<input class="form-control" value="Kewin Ovin" type="text" required="">
+									<input class="form-control" ng-model="editCatalogBookDetail.author" type="text" required="">
 								</div>
 							</div>
 							<div class="row">
 								<div class="form-group col-md-2">
 									<label class="col-form-label pt-0"><span>*</span> Edition</label>
-									<input class="form-control" value="9" type="number" required="">
+									<input class="form-control" ng-model="editCatalogBookDetail.edition" type="number" required="">
+								</div>
+								<div class="form-group col-md-2">
+									<label class="col-form-label pt-0"><span>*</span> Rack</label>
+									<input class="form-control" ng-model="editCatalogBookDetail.rack_number" type="number" required="">
 								</div>
 								<div class="form-group col-md-2">
 									<label class="col-form-label pt-0"><span>*</span> Availability</label>
-									<select class="form-control">
-										<option>Available</option>
-										<option>UnAvailable</option>
+									<select id="availabilityString" ng-model="editCatalogBookDetail.availability" class="form-control">
+										<option value="1">Available</option>
+										<option value="0">UnAvailable</option>
 									</select>
 								</div>
 								<div class="form-group col-md-3">
@@ -87,7 +91,7 @@
 							<div class="form-group pull-right">
 								<div class="product-buttons text-center">
 									<button type="button" class="btn btn-light">Discard</button>
-									<button type="button" ng-click="add()" class="btn btn-primary">Update</button>
+									<button type="button" ng-click="updateCatalogBook()" class="btn btn-primary">Update</button>
 								</div>
 							</div>
 						</div>
@@ -96,11 +100,11 @@
 							<div class="modal-dialog" role="document">
 								<div class="modal-content">
 									<div class="modal-header">
-										<h5 class="modal-title f-w-600" id="exampleModalLabel">Data Structure</h5>
+										<h5 class="modal-title f-w-600" id="exampleModalLabel">{{editCatalogBookDetail.title}}</h5>
 										<button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
 									</div>
 									<div class="modal-body text-center">
-										<img src="../../assets/images/book-placeholder.png" width="300px">
+										<img src="{{serverAddress+'images/'+editCatalogBookDetail.cover}}" width="300px">
 									</div>
 								</div>
 							</div>

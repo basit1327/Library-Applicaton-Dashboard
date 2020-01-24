@@ -63,3 +63,32 @@ function sendServerRequestWithAuthHeader(url,method,data,AuthKey) {
 		}));
 	})
 }
+
+function sendServerRequestWithAuthHeaderForForm(url,data,AuthKey) {
+	return new Promise(function ( resolve ) {
+		resolve($.ajax({
+			url,
+			method: 'POST',
+			data,
+			headers: {
+				'Authorization':AuthKey
+			},
+			processData: false,
+			contentType: false,
+			success: function ( data ) {
+				return data
+			},
+			error: function ( err ) {
+				try {
+					let responseStatus = err.responseJSON
+					if ( responseStatus.status == sessionExpires ) {
+						alert('your session has been expired')
+					}
+				} catch ( e ) {
+					console.log('Failed to get response');
+					console.log(e);
+				}
+			}
+		}));
+	})
+}

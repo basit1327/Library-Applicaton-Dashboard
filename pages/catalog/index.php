@@ -1,6 +1,6 @@
 <?php require_once ('../partials/header.php') ?>
 
-<div class="page-body" ng-controller="catalogCTRL">
+<div class="page-body" ng-controller="catalogCTRL" ng-init="getCatalogBooks()">
 
 	<!-- top bar starts-->
 	<div class="container-fluid">
@@ -58,22 +58,20 @@
 								</tr>
 								</thead>
 								<tbody>
-								<tr>
-									<td>SB512551242322</td>
-									<td class="digits" style="font-weight: 600;">Data Structure</td>
-									<td class="digits"><img data-toggle="modal" data-original-title="test" data-target="#coverModal" src="../../assets/images/book-placeholder.png" width="20px"></td>
-									<td class="digits"><i class="fa fa-user"></i> Kewin Ovin</td>
-									<td class="digits">9</td>
+								<tr ng-repeat="x in catalogBooksList">
+									<td>{{x.isbn}}</td>
+									<td class="digits" style="font-weight: 600;">{{x.title}}</td>
+									<td class="digits"><img ng-click="openModal(x.cover)" class="cover_image_placeholder"  src="../../assets/images/book-placeholder.png" width="20"></td>
+									<td class="digits"><i class="fa fa-user"></i> {{x.author}}</td>
+									<td class="digits">{{x.edition}}</td>
 									<td class="digits">
-										<select>
-											<option>Available</option>
-											<option>UnAvailable</option>
-										</select>
+										<span ng-if="x.availability==true" class="btn btn-xs btn-success">Available</span>
+										<span ng-if="x.availability==false" class="btn btn-xs btn-danger">UnAvailable</span>
 									</td>
-									<td class="digits">19</td>
+									<td class="digits">{{x.rack_number}}</td>
 									<td class="digits">
-										<a href="edit_book.php"><i class="fa fa-edit text-info"></i></a>
-										<a href="#"><i ng-click="deleteBook()" class="fa fa-trash text-danger"></i></a>
+										<a href="#" ng-click="goToEditPage(x.id)"><i class="fa fa-edit text-info"></i></a>
+										<a href="#" ng-click="deleteCatalogBook(x.id)"><i class="fa fa-trash text-danger"></i></a>
 									</td>
 								</tr>
 								</tbody>
@@ -87,7 +85,7 @@
 											<button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
 										</div>
 										<div class="modal-body text-center">
-											<img src="../../assets/images/book-placeholder.png" width="300px">
+											<img id="image_in_modal" src="{{serverAddress+'images/'+coverAddress}}" width="300px">
 										</div>
 									</div>
 								</div>
@@ -107,9 +105,3 @@
 
 <!-- Angular controller for page -->
 <script src="../../controllers/catalogCTRL.js"></script>
-
-<script>
-	$(document).ready(function() {
-		$('#datatable').DataTable( {} );
-	} );
-</script>

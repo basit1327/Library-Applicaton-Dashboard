@@ -1,6 +1,6 @@
 <?php require_once ('../partials/header.php') ?>
 
-<div class="page-body" ng-controller="bookCTRL">
+<div class="page-body" ng-controller="bookCTRL" ng-init="getEBooksList()">
 
 	<!-- top bar starts-->
 	<div class="container-fluid">
@@ -57,13 +57,13 @@
 								</tr>
 								</thead>
 								<tbody>
-								<tr>
-									<td>SB512551242322</td>
-									<td class="digits" style="font-weight: 600;">Data Structure</td>
-									<td class="digits"><i class="fa fa-user"></i> Kewin Ovin</td>
-									<td class="digits">9</td>
-									<td class="digits"><i class="fa fa-money"></i>1500</td>
-									<td class="digits"><i class="fa fa-calendar"></i>13-06-2013</td>
+								<tr ng-repeat="x in eBooksList">
+									<td>{{x.isbn}}</td>
+									<td class="digits" style="font-weight: 600;">{{x.title}}</td>
+									<td class="digits"><i class="fa fa-user"></i> {{x.author}}</td>
+									<td class="digits">{{x.edition}}</td>
+									<td class="digits"><i class="fa fa-money"></i>{{x.price}}</td>
+									<td class="digits"><i class="fa fa-calendar"></i> {{formatDate(x.publish_date)}}</td>
 									<td class="digits">
 										<a href="edit_book.php?isbn=SB512551242322&title=Data%20Structure&author=Kewin Ovin&date=01/22/2013"><i class="fa fa-edit text-info"></i></a>
 										<a href="#"><i ng-click="deleteBook()" class="fa fa-trash text-danger"></i></a>
@@ -86,9 +86,3 @@
 
 <!-- Angular controller for page -->
 <script src="../../controllers/bookCTRL.js"></script>
-
-<script>
-	$(document).ready(function() {
-		$('#datatable').DataTable( {} );
-	} );
-</script>
