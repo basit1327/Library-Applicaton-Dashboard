@@ -95,7 +95,7 @@ iukl.controller("catalogCTRL", ['$http', '$scope', function(http,sc){
 		}
 	};
 
-	sc.getInitialHospitalDetail = ()=>{
+	sc.getInitialEditDetail = ()=>{
 		try{
 			let data = JSON.parse(localStorage.getItem("catalogBookDetail"));
 			sc.editCatalogBookDetail = data;

@@ -3,7 +3,7 @@
 <link rel="stylesheet" type="text/css" href="../../assets/css/dropzone.css">
 
 
-<div class="page-body" ng-controller="bookCTRL">
+<div class="page-body" ng-controller="bookCTRL" ng-init="getInitialEditDetail()">
 
 	<!-- top bar starts-->
 	<div class="container-fluid">
@@ -38,11 +38,22 @@
 						<h5 style="text-transform: none">eBook Details</h5>
 					</div>
 					<div class="card-body">
+						<div class="col-xl-5">
+							<div class="card" ng-init="initDropZone()">
+								<div class="card-body">
+									<form action="#" class="dropzone" id="dropzoneForBook">
+										<div class="fallback">
+											<input name="file" type="file"/>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
 						<div class="digital-add needs-validation">
 							<div class="row">
 								<div class="form-group col-md-4">
 									<label class="col-form-label pt-0"><span>*</span> ISBN</label>
-									<input class="form-control" ng-model="editBookDetail.newISBN" type="text" required="">
+									<input class="form-control" ng-model="editBookDetail.isbn" type="text" required="">
 								</div>
 								<div class="form-group col-md-4">
 									<label class="col-form-label pt-0"><span>*</span> Title</label>
@@ -64,13 +75,13 @@
 								</div>
 								<div class="form-group col-md-4">
 									<label class="col-form-label pt-0"><span>*</span> Publish Date</label>
-									<input class="form-control" ng-model="editBookDetail.date" type="date" required="">
+									<input class="form-control" ng-model="editBookDetail.new_publish_date" type="date" required="">
 								</div>
 							</div>
 							<div class="form-group pull-right">
 								<div class="product-buttons text-center">
-									<button type="button" ng-click="discard()" class="btn btn-light">Discard</button>
-									<button type="button" ng-click="createAccount()" class="btn btn-primary">Update</button>
+									<a href="index.php"  class="btn btn-light">Discard</a>
+									<button type="button" ng-click="updateEBook()" class="btn btn-primary">Update</button>
 								</div>
 							</div>
 						</div>
@@ -86,6 +97,7 @@
 
 <!-- Dropzone js-->
 <script src="../../assets/js/dropzone/dropzone.js"></script>
+<script> Dropzone.autoDiscover = false;</script>
 
 <?php require_once ('../partials/footer.php') ?>
 
@@ -93,4 +105,3 @@
 <!-- Angular controller for page -->
 <script src="../../controllers/bookCTRL.js"></script>
 
-<script> Dropzone.autoDiscover = false;</script>

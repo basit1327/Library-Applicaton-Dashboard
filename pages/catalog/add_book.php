@@ -99,6 +99,7 @@
 </div>
 <!-- Dropzone js-->
 <script src="../../assets/js/dropzone/dropzone.js"></script>
+<script> Dropzone.autoDiscover = false;</script>
 
 <?php require_once ('../partials/footer.php') ?>
 
@@ -106,4 +107,3 @@
 <!-- Angular controller for page -->
 <script src="../../controllers/catalogCTRL.js"></script>
 
-<script> Dropzone.autoDiscover = false;</script>

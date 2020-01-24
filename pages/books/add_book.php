@@ -1,4 +1,6 @@
 <?php require_once ('../partials/header.php') ?>
+<!-- Dropzone css-->
+<link rel="stylesheet" type="text/css" href="../../assets/css/dropzone.css">
 
 
 <div class="page-body" ng-controller="bookCTRL">
@@ -36,43 +38,54 @@
 						<h5 style="text-transform: none">eBook Details</h5>
 					</div>
 					<div class="card-body">
-						<div class="digital-add needs-validation">
+						<div class="digital-add needs-validation" ng-init="initDropZone()">
+							<div class="col-xl-5">
+								<div class="card">
+									<div class="card-body">
+										<form action="#" class="dropzone" id="dropzoneForBook">
+											<div class="fallback">
+												<input name="file" type="file"/>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
 							<div class="row">
 								<div class="form-group col-md-4">
 									<label class="col-form-label pt-0"><span>*</span> ISBN</label>
-									<input class="form-control"  type="text" required="">
+									<input class="form-control" ng-model="newBook.isbn" type="text" required="">
 								</div>
 								<div class="form-group col-md-4">
 									<label class="col-form-label pt-0"><span>*</span> Title</label>
-									<input class="form-control"  type="text" required="">
+									<input class="form-control" ng-model="newBook.title" type="text" required="">
 								</div>
 								<div class="form-group col-md-4">
 									<label class="col-form-label pt-0"><span>*</span> Author</label>
-									<input class="form-control"  type="text" required="">
+									<input class="form-control" ng-model="newBook.author" type="text" required="">
 								</div>
 							</div>
 							<div class="row">
 								<div class="form-group col-md-2">
 									<label class="col-form-label pt-0"><span>*</span> Edition</label>
-									<input class="form-control"  type="number" required="">
+									<input class="form-control" ng-model="newBook.edition" type="number" required="">
 								</div>
 								<div class="form-group col-md-2">
 									<label class="col-form-label pt-0"><span>*</span> Price</label>
-									<input class="form-control"  type="number" required="">
+									<input class="form-control" ng-model="newBook.price" type="number" required="">
 								</div>
 								<div class="form-group col-md-4">
 									<label class="col-form-label pt-0"><span>*</span> Publish Date</label>
-									<input class="form-control"  type="date" required="">
+									<input class="form-control" ng-model="newBook.publish_date" type="date" required="">
 								</div>
-								<div class="form-group col-md-4">
-									<label class="col-form-label pt-0"><span>*</span> File</label>
-									<input class="form-control"  type="file" required="">
-								</div>
+<!--								<div class="form-group col-md-4">-->
+<!--									<label class="col-form-label pt-0"><span>*</span> File</label>-->
+<!--									<input class="form-control"  type="file" required="">-->
+<!--								</div>-->
 							</div>
 							<div class="form-group pull-right">
 								<div class="product-buttons text-center">
-									<button type="button" ng-click="discard()" class="btn btn-light">Discard</button>
-									<button type="button" ng-click="createAccount()" class="btn btn-primary">Add</button>
+									<a href="index.php"  class="btn btn-light">Discard</a>
+									<button type="button" ng-click="addNewBook()" class="btn btn-primary">Add</button>
 								</div>
 							</div>
 						</div>
@@ -87,6 +100,10 @@
 </div>
 
 <?php require_once ('../partials/footer.php') ?>
+
+<!-- Dropzone js-->
+<script src="../../assets/js/dropzone/dropzone.js"></script>
+<script> Dropzone.autoDiscover = false;</script>
 
 
 <!-- Angular controller for page -->

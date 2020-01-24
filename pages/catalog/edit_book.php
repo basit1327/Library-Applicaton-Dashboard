@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="../../assets/css/dropzone.css">
 
 
-<div class="page-body" ng-controller="catalogCTRL" ng-init="getInitialHospitalDetail()">
+<div class="page-body" ng-controller="catalogCTRL" ng-init="getInitialEditDetail()">
 
 	<!-- top bar starts-->
 	<div class="container-fluid">

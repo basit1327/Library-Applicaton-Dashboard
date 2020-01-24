@@ -65,8 +65,8 @@
 									<td class="digits"><i class="fa fa-money"></i>{{x.price}}</td>
 									<td class="digits"><i class="fa fa-calendar"></i> {{formatDate(x.publish_date)}}</td>
 									<td class="digits">
-										<a href="edit_book.php?isbn=SB512551242322&title=Data%20Structure&author=Kewin Ovin&date=01/22/2013"><i class="fa fa-edit text-info"></i></a>
-										<a href="#"><i ng-click="deleteBook()" class="fa fa-trash text-danger"></i></a>
+										<a href="#" ng-click="goToEditPage(x.id)"><i class="fa fa-edit text-info"></i></a>
+										<a href="#"><i ng-click="deleteCatalogBook(x.id)" class="fa fa-trash text-danger"></i></a>
 									</td>
 								</tr>
 								</tbody>
