@@ -3,7 +3,7 @@
 <link rel="stylesheet" type="text/css" href="../../assets/css/dropzone.css">
 
 
-<div class="page-body" ng-controller="bookCTRL">
+<div class="page-body" ng-controller="paperCTRL" ng-init="getInitialEditDetail()">
 
 	<!-- top bar starts-->
 	<div class="container-fluid">
@@ -30,7 +30,7 @@
 
 
 	<!-- create account starts-->
-	<div class="container-fluid" ng-init="initEditPage()">
+	<div class="container-fluid" ng-init="initDropZone()">
 		<div class="row product-adding">
 			<div class="col-xl-12">
 				<div class="card">
@@ -38,25 +38,49 @@
 						<h5 style="text-transform: none">Exam Paper Details</h5>
 					</div>
 					<div class="card-body">
+						<div class="col-xl-5">
+							<div class="card">
+								<div class="card-body">
+									<form action="#" class="dropzone" id="dropzoneForPaper">
+										<div class="fallback">
+											<input name="file" type="file"/>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
 						<div class="digital-add needs-validation">
 							<div class="row">
 								<div class="form-group col-md-6">
 									<label class="col-form-label pt-0"><span>*</span> Subject Code</label>
-									<input class="form-control" value="CS4" type="text" required="">
+									<input class="form-control" ng-model="editPaperDetail.subject_code" type="text" required="">
 								</div>
 								<div class="form-group col-md-6">
 									<label class="col-form-label pt-0"><span>*</span> Title</label>
-									<input class="form-control" value="Discrete Mathmatics" type="text" required="">
+									<input class="form-control" ng-model="editPaperDetail.title" type="text" required="">
 								</div>
 							</div>
 							<div class="row">
 								<div class="form-group col-md-4">
 									<label class="col-form-label pt-0"><span>*</span> Semester</label>
-									<input class="form-control" value="9" type="text" required="">
+									<select class="form-control" ng-model="editPaperDetail.semester_month" required="">
+										<option value="1">Jan</option>
+										<option value="2">Feb</option>
+										<option value="3">Mar</option>
+										<option value="4">Apr</option>
+										<option value="5">May</option>
+										<option value="6">Jun</option>
+										<option value="7">Jul</option>
+										<option value="8">Aug</option>
+										<option value="9">Sep</option>
+										<option value="10">Oct</option>
+										<option value="11">Nov</option>
+										<option value="12">Dec</option>
+									</select>
 								</div>
 								<div class="form-group col-md-4">
 									<label class="col-form-label pt-0"><span>*</span> Year</label>
-									<select class="form-control"  required="">
+									<select class="form-control" ng-model="editPaperDetail.year" required="">
 										<option>2020</option>
 										<option>2019</option>
 										<option>2018</option>
@@ -70,8 +94,8 @@
 							</div>
 							<div class="form-group pull-right">
 								<div class="product-buttons text-center">
-									<button type="button" ng-click="discard()" class="btn btn-light">Discard</button>
-									<button type="button" ng-click="createAccount()" class="btn btn-primary">Update</button>
+									<a href="index.php" class="btn btn-light">Discard</a>
+									<button type="button" ng-click="updatePaper()" class="btn btn-primary">Update</button>
 								</div>
 							</div>
 						</div>
@@ -87,11 +111,11 @@
 
 <!-- Dropzone js-->
 <script src="../../assets/js/dropzone/dropzone.js"></script>
+<script> Dropzone.autoDiscover = false;</script>
 
 <?php require_once ('../partials/footer.php') ?>
 
 
 <!-- Angular controller for page -->
-<script src="../../controllers/bookCTRL.js"></script>
+<script src="../../controllers/paperCTRL.js"></script>
 
-<script> Dropzone.autoDiscover = false;</script>

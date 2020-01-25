@@ -66,7 +66,7 @@
 									<td class="digits"><i class="fa fa-calendar"></i> {{formatDate(x.publish_date)}}</td>
 									<td class="digits">
 										<a href="#" ng-click="goToEditPage(x.id)"><i class="fa fa-edit text-info"></i></a>
-										<a href="#"><i ng-click="deleteCatalogBook(x.id)" class="fa fa-trash text-danger"></i></a>
+										<a href="#"><i ng-click="deleteEBook(x.id)" class="fa fa-trash text-danger"></i></a>
 									</td>
 								</tr>
 								</tbody>

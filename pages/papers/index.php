@@ -58,11 +58,12 @@
 								<tr ng-repeat="x in papersList">
 									<td>{{x.subject_code}}</td>
 									<td class="digits" style="font-weight: 600;">{{x.title}}</td>
-									<td class="digits">{{months[x.semestor_month]}}</td>
+									<td class="digits">{{months[x.semester_month]}}</td>
+<!--									<td class="digits"><a href="localhost:3006" target="_blank"><i class="fa fa-file-pdf">{{x.file}}</i></a>  /</td>-->
 									<td class="digits"><i class="fa fa-calendar"></i> {{x.year}}</td>
 									<td class="digits">
-										<a href="edit_paper.php?id=1"><i class="fa fa-edit text-info"></i></a>
-										<a href="#"><i ng-click="deletePaper()" class="fa fa-trash text-danger"></i></a>
+										<a href="#" ng-click="goToEditPage(x.id)"><i class="fa fa-edit text-info"></i></a>
+										<a href="#"><i ng-click="deletePaper(x.id)" class="fa fa-trash text-danger"></i></a>
 									</td>
 								</tr>
 								</tbody>

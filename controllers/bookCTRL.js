@@ -105,7 +105,6 @@ iukl.controller("bookCTRL", ['$http', '$scope', function(http,sc){
 		}
 	};
 
-
 	sc.updateEBook = async ()=> {
 		if ( sc.editBookDetail.isbn && sc.editBookDetail.title && sc.editBookDetail.author && sc.editBookDetail.edition && sc.editBookDetail.price && sc.editBookDetail.new_publish_date){
 			try{
@@ -166,8 +165,7 @@ iukl.controller("bookCTRL", ['$http', '$scope', function(http,sc){
 		}
 	};
 
-
-	sc.deleteCatalogBook = async (id)=>{
+	sc.deleteEBook = async (id)=>{
 		var deleteExecutor = async ()=>{
 			try{
 				let serverResponse = await sendServerRequestWithAuthHeader(apiBaseURL+'ebook/delete?id='+id,"GET",null,getCookie('sessionId'));
@@ -217,8 +215,6 @@ iukl.controller("bookCTRL", ['$http', '$scope', function(http,sc){
 			}
 		});
 	};
-
-
 
 	var bookUploader;
 	sc.initDropZone = ()=>{

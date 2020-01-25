@@ -34,7 +34,7 @@
 									<div class="align-self-center text-center"><i data-feather="book" class="font-primary" style="color: #212123 !important;"></i></div>
 								</div>
 								<div class="media-body col-4"><span class="m-0">eBooks</span>
-									<h3 class="mb-0"><span>{{dashboardStats.ebooks}}</span><small> In Total</small></h3>
+									<h3 class="mb-0"><span>{{dashboardStats.ebook}}</span><small> In Total</small></h3>
 								</div>
 								<div class="icons-widgets col-2">
 									<div class="align-self-center text-center"><i data-feather="book-open" class="font-primary" style="color: #212123 !important;"></i></div>
@@ -54,7 +54,7 @@
 									<div class="align-self-center text-center"><i data-feather="file-text"  style="color: #212123;"></i></div>
 								</div>
 								<div class="media-body col-8"><span class="m-0" style="color: white;">Exam Papers</span>
-									<h3 class="mb-0"><span>{{dashboardStats.papers}}</span><small> In Total</small></h3>
+									<h3 class="mb-0"><span>{{dashboardStats.paper}}</span><small> In Total</small></h3>
 								</div>
 							</div>
 						</div>
