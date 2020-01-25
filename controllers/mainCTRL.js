@@ -88,7 +88,6 @@ iukl.controller("mainCTRL", ['$http', '$scope', function(http, sc){
 
     sc.formatDate =(date)=>{
         let dt = new Date(Number(date));
-        console.log(date,dt);
         if ( dt ){
             return (dt.getDate()>9?dt.getDate():'0'+dt.getDate()) +'-'+
                 ((dt.getMonth()+1)>9?(dt.getMonth()+1):'0'+(dt.getMonth()+1)) +'-'+

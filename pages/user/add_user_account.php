@@ -39,16 +39,16 @@
 						<div class="digital-add needs-validation">
 							<div class="form-group">
 								<label class="col-form-label pt-0"><span>*</span> StudentId</label>
-								<input class="form-control"  type="text" required="">
+								<input class="form-control" ng-model="newUser.student_id" type="text" required="">
 							</div>
 							<div class="form-group">
 								<label class="col-form-label pt-0"><span>*</span> Name</label>
-								<input class="form-control"  type="text" required="">
+								<input class="form-control" ng-model="newUser.name" type="text" required="">
 							</div>
 							<div class="form-group">
 								<label class="col-form-label"><span>*</span>Password </label>
 								<div class="input-group mb-3">
-									<input type="password" class="form-control">
+									<input type="password" ng-model="newUser.password" class="form-control">
 									<div class="input-group-prepend">
 										<span class="input-group-text">
 											<i class="fa fa-eye"></i>
@@ -59,7 +59,7 @@
 							<div class="form-group pull-right">
 								<div class="product-buttons text-center">
 									<a type="button" href="user_accounts.php" class="btn btn-light">Discard</a>
-									<button type="button" ng-click="createUserAccount()" class="btn btn-primary">Create</button>
+									<button type="button" ng-click="addUser()" class="btn btn-primary">Create</button>
 								</div>
 							</div>
 						</div>

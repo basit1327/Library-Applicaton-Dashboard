@@ -34,58 +34,45 @@
 								<li class="nav-item"><a class="nav-link active"  data-toggle="tab" href="#tab-user" role="tab"  aria-selected="true"><i data-feather="user" class="mr-2"></i>Users</a></li>
 								<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab-ebooks" role="tab" aria-selected="false"><i data-feather="book" class="mr-2"></i>eBooks</a></li>
 								<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab-papers" role="tab" aria-selected="false"><i data-feather="file-text" class="mr-2"></i>Exam Papers</a></li>
-								<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab-booking" role="tab" aria-selected="false"><i data-feather="grid" class="mr-2"></i>Room Bookings</a></li>
+								<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab-catalog" role="tab" aria-selected="false"><i data-feather="book-open" class="mr-2"></i>Catalog</a></li>
+<!--								<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab-booking" role="tab" aria-selected="false"><i data-feather="grid" class="mr-2"></i>Room Bookings</a></li>-->
 							</ul>
 							<div class="tab-content" id="top-tabContent">
-								<div class="tab-pane fade show active" id="tab-user" role="tabpanel">
+								<div class="tab-pane fade show active" id="tab-user" role="tabpanel" ng-init="getUserList()">
 									<h5 class="f-w-600">Users Registration by</h5>
 									<div class="col-auto mb-5">
-										<input type="text" class="dateRangePicker form-control">
+										<input type="text" id="dateRangePicker_user" class="dateRangePicker form-control">
 									</div>
 									<table class="datatable table table-bordernone">
 										<thead>
 										<tr>
-											<th scope="col">ID</th>
+											<th scope="col">StudentId</th>
 											<th scope="col">Name</th>
-											<th scope="col">Email</th>
 											<th scope="col">Created At</th>
-											<th scope="col">Created By</th>
+											<th scope="col">Status</th>
 										</tr>
 										</thead>
 										<tbody>
-										<tr>
-											<td>USR1</td>
+										<tr ng-repeat="x in usersListToShow">
+											<td>{{x.student_id}}</td>
 											<td class="bd-t-none u-s-tb">
 												<div class="align-middle image-sm-size"><img style="width: 35px;margin-top: 3%;" class="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src="../../assets/images/user_placeholder.png" alt="" data-original-title="" title="">
 													<div class="d-inline-block">
-														<h6>Randy Ortan</h6>
+														<h6>{{x.name}}</h6>
 													</div>
 												</div>
 											</td>
-											<td class="digits">randy@mail.com</td>
-											<td class="digits">12-Dec-2018</td>
-											<td class="digits">Martin Axe</td>
-										</tr>
-										<tr>
-											<td>USR2</td>
-											<td class="bd-t-none u-s-tb">
-												<div class="align-middle image-sm-size"><img style="width: 35px;margin-top: 3%;" class="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src="../../assets/images/user_placeholder.png" alt="" data-original-title="" title="">
-													<div class="d-inline-block">
-														<h6>Marin Axe</h6>
-													</div>
-												</div>
-											</td>
-											<td class="digits">Marin@mail.com</td>
-											<td class="digits">12-Dec-2018</td>
-											<td class="digits">Martin Axe</td>
+											<td class="digits">{{formatDate(x.created_at)}}</td>
+											<td class="digits" ng-if="x.status==1"><span style="color: green">Approved</span></td>
+											<td class="digits" ng-if="x.status==2"><span style="color: red">Not Approved</span></td>
 										</tr>
 										</tbody>
 									</table>
 								</div>
-								<div class="tab-pane fade" id="tab-ebooks" role="tabpanel">
+								<div class="tab-pane fade" id="tab-ebooks" role="tabpanel" ng-init="getEBookList()">
 									<h5 class="f-w-600">eBooks Added by</h5>
 									<div class="col-auto mb-5">
-										<input type="text" class="dateRangePicker form-control">
+										<input type="text" id="dateRangePicker_ebook" class="dateRangePicker form-control">
 									</div>
 									<table class="datatable table table-bordernone" style="width:100%">
 										<thead>
@@ -96,51 +83,80 @@
 											<td scope="col">Edition</td>
 											<td scope="col">Price</td>
 											<td scope="col">Publish Date</td>
-											<td scope="col">Added Date</td>
+											<td scope="col">Added At</td>
 										</tr>
 										</thead>
 										<tbody>
-										<tr>
-											<td>SB512551242322</td>
-											<td class="digits" style="font-weight: 600;">Data Structure</td>
-											<td class="digits"><i class="fa fa-user"></i> Kewin Ovin</td>
-											<td class="digits">9</td>
-											<td class="digits"><i class="fa fa-money"></i>1500</td>
-											<td class="digits"><i class="fa fa-calendar"></i> 13-06-2013</td>
-											<td class="digits"><i class="fa fa-calendar"></i> 01-01-2019</td>
+										<tr ng-repeat="x in ebookListToShow">
+											<td>{{x.isbn}}</td>
+											<td class="digits" style="font-weight: 600;">{{x.title}}</td>
+											<td class="digits"><i class="fa fa-user"></i> {{x.author}}</td>
+											<td class="digits">{{x.edition}}</td>
+											<td class="digits"><i class="fa fa-money"></i>{{x.price}}</td>
+											<td class="digits"><i class="fa fa-calendar"></i> {{formatDate(x.publish_date)}}</td>
+											<td class="digits"><i class="fa fa-calendar"></i> {{formatDate(x.added_at)}}</td>
 										</tr>
 										</tbody>
 									</table>
 								</div>
-								<div class="tab-pane fade" id="tab-papers" role="tabpanel">
+								<div class="tab-pane fade" id="tab-papers" role="tabpanel" ng-init="getPaperList()">
 									<h5 class="f-w-600">Exam Paper Added by</h5>
 									<div class="col-auto mb-5">
-										<input type="text" class="dateRangePicker form-control">
+										<input type="text" id="dateRangePicker_paper" class="dateRangePicker form-control">
 									</div>
 									<table class="datatable table table-bordernone" style="width:100%">
 										<thead>
 										<tr>
 											<td scope="col">Subject Code</td>
 											<td scope="col">Title</td>
-											<td scope="col">Semester Name</td>
+											<td scope="col">Semester Month</td>
 											<td scope="col">Year</td>
-											<td scope="col">Added Date</td>
+											<td scope="col">Added At</td>
 										</tr>
 										</thead>
 										<tbody>
-										<tr>
-											<td>DT1</td>
-											<td class="digits" style="font-weight: 600;">Calculas 1</td>
-											<td class="digits"><i class="fa fa-user"></i> BSCS-1</td>
-											<td class="digits"><i class="fa fa-calendar"></i> 2019</td>
-											<td class="digits"><i class="fa fa-calendar"></i> 01-01-2019</td>
+										<tr ng-repeat="x in paperListToShow">
+											<td>{{x.subject_code}}</td>
+											<td class="digits" style="font-weight: 600;">{{x.title}}</td>
+											<td class="digits">{{months[x.semester_month]}}</td>
+											<!--									<td class="digits"><a href="localhost:3006" target="_blank"><i class="fa fa-file-pdf">{{x.file}}</i></a>  /</td>-->
+											<td class="digits"><i class="fa fa-calendar"></i> {{x.year}}</td>
+											<td class="digits"><i class="fa fa-calendar"></i> {{formatDate(x.added_at)}}</td>
 										</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="tab-pane fade" id="tab-catalog" role="tabpanel" ng-init="getCatalogList()">
+									<h5 class="f-w-600">Exam Paper Added by</h5>
+									<div class="col-auto mb-5">
+										<input type="text" id="dateRangePicker_catalog" class="dateRangePicker form-control">
+									</div>
+									<table class="datatable table table-bordernone" style="width:100%">
+										<thead>
 										<tr>
-											<td>CS4</td>
-											<td class="digits" style="font-weight: 600;">Discrete Mathmatics</td>
-											<td class="digits"><i class="fa fa-user"></i> MSc P1</td>
-											<td class="digits"><i class="fa fa-calendar"></i> 2019</td>
-											<td class="digits"><i class="fa fa-calendar"></i> 01-01-2019</td>
+											<td scope="col">ISBN</td>
+											<td scope="col">Title</td>
+											<td scope="col">Cover</td>
+											<td scope="col">Author</td>
+											<td scope="col">Edition</td>
+											<td scope="col">Availability</td>
+											<td scope="col">Rack</td>
+											<td scope="col">Added At</td>
+										</tr>
+										</thead>
+										<tbody>
+										<tr ng-repeat="x in catalogListToShow">
+											<td>{{x.isbn}}</td>
+											<td class="digits" style="font-weight: 600;">{{x.title}}</td>
+											<td class="digits"><img ng-click="openModal(x.cover)" class="cover_image_placeholder"  src="../../assets/images/book-placeholder.png" width="20"></td>
+											<td class="digits"><i class="fa fa-user"></i> {{x.author}}</td>
+											<td class="digits">{{x.edition}}</td>
+											<td class="digits">
+												<span ng-if="x.availability==true" class="btn btn-xs btn-success">Available</span>
+												<span ng-if="x.availability==false" class="btn btn-xs btn-danger">UnAvailable</span>
+											</td>
+											<td class="digits">{{x.rack_number}}</td>
+											<td class="digits"><i class="fa fa-calendar"></i> {{formatDate(x.added_at)}}</td>
 										</tr>
 										</tbody>
 									</table>
@@ -237,36 +253,15 @@
 <script src="../../assets/js/datatables/datatable-print-button.min.js"></script>
 
 <script>
-	$(document).ready(function() {
-		$('.datatable').DataTable( {
-			dom: 'Bfrtip',
-			buttons: [
-				'print'
-			]
-		} );
-	} );
+	// $(document).ready(function() {
+	// 	$('.datatable').DataTable( {
+	// 		dom: 'Bfrtip',
+	// 		buttons: [
+	// 			'print'
+	// 		]
+	// 	} );
+	// } );
 
-	var dateRangesForReceivedServices = {
-		fromDate:getDateForRangePicker(1),
-		toDate:getDateForRangePicker(0)
-	};
-
-	$('.dateRangePicker').daterangepicker({
-		ranges: {
-			'Today': [moment(), moment()],
-			'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-			'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-			'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-			'This Month': [moment().startOf('month'), moment().endOf('month')],
-			'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-		},
-		"startDate": dateRangesForReceivedServices.fromDate,
-		"endDate": dateRangesForReceivedServices.toDate,
-		"maxDate": dateRangesForReceivedServices.toDate
-	}, (start, end)=> {
-		dateRangesForReceivedServices.fromDate = start.format('MM/DD/YYYY');
-		dateRangesForReceivedServices.toDate = end.format('MM/DD/YYYY');
-		console.log('New date range selected: ',dateRangesForReceivedServices);
-	})
+	$('#datatable').DataTable({});
 
 </script>

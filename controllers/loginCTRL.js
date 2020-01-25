@@ -33,7 +33,7 @@ iukl.controller("loginCTRL", ['$http', '$scope', function(http,sc){
 		if ( serverResponse.status===200 ) {
 			swal({
 				title: "Login succeed",
-				text: "Redirecting you to HMS Dashboard",
+				text: "Redirecting you to Dashboard",
 				icon: "success",
 				button: null,
 			});

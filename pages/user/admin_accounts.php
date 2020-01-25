@@ -1,6 +1,6 @@
 <?php require_once ('../partials/header.php') ?>
 
-<div class="page-body" ng-controller="accountsCTRL">
+<div class="page-body" ng-controller="accountsCTRL" ng-init="getAdminsList()">
 
 	<!-- top bar starts-->
 	<div class="container-fluid">
@@ -55,29 +55,18 @@
 								</tr>
 								</thead>
 								<tbody>
-								<tr>
-									<td>USR1</td>
+								<tr ng-repeat="x in adminsList">
+									<td>{{x.staff_id}}</td>
 									<td class="bd-t-none u-s-tb">
 										<div class="align-middle image-sm-size"><img style="width: 35px;margin-top: 3%;" class="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src="../../assets/images/user_placeholder.png" alt="" data-original-title="" title="">
 											<div class="d-inline-block">
-												<h6>Randy Ortan</h6>
+												<h6>{{x.name}}</h6>
 											</div>
 										</div>
 									</td>
-									<td class="digits">12-Dec-2018</td>
-									<td class="digits">N/A</td>
-								</tr>
-								<tr>
-									<td>USR2</td>
-									<td class="bd-t-none u-s-tb">
-										<div class="align-middle image-sm-size"><img style="width: 35px;margin-top: 3%;" class="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src="../../assets/images/user_placeholder.png" alt="" data-original-title="" title="">
-											<div class="d-inline-block">
-												<h6>Marin Axe</h6>
-											</div>
-										</div>
-									</td>
-									<td class="digits">12-Dec-2018</td>
-									<td class="digits">Randy Ortan</td>
+									<td class="digits">{{formatDate(x.created_at)}}</td>
+									<td class="digits" ng-if="x.created_by==x.name">N/A</td>
+									<td class="digits" ng-if="x.created_by!=x.name">{{x.created_by}}</td>
 								</tr>
 								</tbody>
 							</table>
@@ -96,8 +85,3 @@
 
 <!-- Angular controller for page -->
 <script src="../../controllers/accountsCTRL.js"></script>
-<script>
-	$(document).ready(function() {
-		$('#datatable').DataTable( {} );
-	} );
-</script>

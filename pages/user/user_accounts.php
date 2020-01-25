@@ -1,6 +1,6 @@
 <?php require_once ('../partials/header.php') ?>
 
-<div class="page-body" ng-controller="accountsCTRL">
+<div class="page-body" ng-controller="accountsCTRL" ng-init="getUserList()">
 
 	<!-- top bar starts-->
 	<div class="container-fluid">
@@ -51,41 +51,26 @@
 									<th scope="col">StudentId</th>
 									<th scope="col">Name</th>
 									<th scope="col">Created At</th>
-									<th scope="col">Created By</th>
+									<th scope="col">Status</th>
 									<th scope="col">Actions</th>
 								</tr>
 								</thead>
 								<tbody>
-								<tr>
-									<td>USR1</td>
+								<tr ng-repeat="x in usersList">
+									<td>{{x.student_id}}</td>
 									<td class="bd-t-none u-s-tb">
 										<div class="align-middle image-sm-size"><img style="width: 35px;margin-top: 3%;" class="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src="../../assets/images/user_placeholder.png" alt="" data-original-title="" title="">
 											<div class="d-inline-block">
-												<h6>Randy Ortan</h6>
+												<h6>{{x.name}}</h6>
 											</div>
 										</div>
 									</td>
-									<td class="digits">12-Dec-2018</td>
-									<td class="digits">Martin Axe</td>
+									<td class="digits">{{formatDate(x.created_at)}}</td>
+									<td class="digits" ng-if="x.status==1"><span style="color: green">Approved</span></td>
+									<td class="digits" ng-if="x.status==2"><span style="color: red">Not Approved</span></td>
 									<td class="digits">
-										<a href="edit_user_account.php?id=1"><i class="fa fa-edit text-info"></i></a>
-										<a href="#"><i ng-click="deleteUserAccount()" class="fa fa-trash text-danger"></i></a>
-									</td>
-								</tr>
-								<tr>
-									<td>USR2</td>
-									<td class="bd-t-none u-s-tb">
-										<div class="align-middle image-sm-size"><img style="width: 35px;margin-top: 3%;" class="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src="../../assets/images/user_placeholder.png" alt="" data-original-title="" title="">
-											<div class="d-inline-block">
-												<h6>Marin Axe</h6>
-											</div>
-										</div>
-									</td>
-									<td class="digits">12-Dec-2018</td>
-									<td class="digits">Martin Axe</td>
-									<td class="digits">
-										<a href="#"><i class="fa fa-edit text-info"></i></a>
-										<a href="#"><i ng-click="deleteUserAccount()" class="fa fa-trash text-danger"></i></a>
+										<a href="#" ng-click="goToEditUserPage(x.id)"><i class="fa fa-edit text-info"></i></a>
+										<a href="#"><i ng-click="deleteUser(x.id)" class="fa fa-trash text-danger"></i></a>
 									</td>
 								</tr>
 								</tbody>
@@ -106,8 +91,4 @@
 
 <!-- Angular controller for page -->
 <script src="../../controllers/accountsCTRL.js"></script>
-<script>
-	$(document).ready(function() {
-		$('#datatable').DataTable( {} );
-	} );
-</script>
+

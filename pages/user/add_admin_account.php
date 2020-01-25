@@ -39,16 +39,16 @@
 						<div class="digital-add needs-validation">
 							<div class="form-group">
 								<label class="col-form-label pt-0"><span>*</span> StaffId</label>
-								<input class="form-control"  type="text" required="">
+								<input class="form-control" ng-model="newAdmin.staff_id" type="text" required="">
 							</div>
 							<div class="form-group">
 								<label class="col-form-label pt-0"><span>*</span> Name</label>
-								<input class="form-control"  type="text" required="">
+								<input class="form-control" ng-model="newAdmin.name" type="text" required="">
 							</div>
 							<div class="form-group">
 								<label class="col-form-label"><span>*</span>Password </label>
 								<div class="input-group mb-3">
-									<input type="password" class="form-control">
+									<input type="password" ng-model="newAdmin.password" class="form-control">
 									<div class="input-group-prepend">
 										<span class="input-group-text">
 											<i class="fa fa-eye"></i>
@@ -59,7 +59,7 @@
 							<div class="form-group pull-right">
 								<div class="product-buttons text-center">
 									<a type="button" href="admin_accounts.php" class="btn btn-light">Discard</a>
-									<button type="button" ng-click="createAdminAccount()" class="btn btn-primary">Create</button>
+									<button type="button" ng-click="addAdmin()" class="btn btn-primary">Create</button>
 								</div>
 							</div>
 						</div>
