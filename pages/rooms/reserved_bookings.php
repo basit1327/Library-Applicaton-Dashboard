@@ -1,6 +1,6 @@
 <?php require_once ('../partials/header.php') ?>
 
-<div class="page-body" ng-controller="accountsCTRL">
+<div class="page-body" ng-controller="roomCTRL" ng-init="getReservedBookingList()">
 
 	<!-- top bar starts-->
 	<div class="container-fluid">
@@ -35,9 +35,8 @@
 							<table id="datatable" class="table table-bordernone">
 								<thead>
 								<tr>
-									<th scope="col">UserId</th>
+									<th scope="col">StudentId</th>
 									<th scope="col">Name</th>
-									<th scope="col">Email</th>
 									<th scope="col">Room</th>
 									<th scope="col">Date</th>
 									<th scope="col">Checkin Time</th>
@@ -46,53 +45,21 @@
 								</tr>
 								</thead>
 								<tbody>
-								<tr>
-									<td>USR1</td>
+								<tr ng-repeat="x in reservedBookingList">
+									<td>{{x.student_id}}</td>
 									<td class="bd-t-none u-s-tb">
 										<div class="align-middle image-sm-size"><img style="width: 35px;margin-top: 3%;" class="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src="../../assets/images/user_placeholder.png" alt="" data-original-title="" title="">
 											<div class="d-inline-block">
-												<h6>Randy Ortan</h6>
+												<h6>{{x.user_name}}</h6>
 											</div>
 										</div>
 									</td>
-									<td class="digits">randy@mail.com</td>
-									<td class="digits">Meeting Room</td>
-									<td class="digits">22-Jan-2020</td>
-									<td class="digits">12:00 PM</td>
-									<td class="digits">02:00 PM</td>
-									<td class="digits"><span class="label label-secondary" style="padding: 5px">upcoming</span></td>
-								</tr>
-								<tr>
-									<td>USR1</td>
-									<td class="bd-t-none u-s-tb">
-										<div class="align-middle image-sm-size"><img style="width: 35px;margin-top: 3%;" class="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src="../../assets/images/user_placeholder.png" alt="" data-original-title="" title="">
-											<div class="d-inline-block">
-												<h6>Randy Ortan</h6>
-											</div>
-										</div>
-									</td>
-									<td class="digits">randy@mail.com</td>
-									<td class="digits">Meeting Room</td>
-									<td class="digits">23-Jan-2020</td>
-									<td class="digits">01:00 PM</td>
-									<td class="digits">02:00 PM</td>
-									<td class="digits"><span class="label label-secondary" style="padding: 5px">upcoming</span></td>
-								</tr>
-								<tr>
-									<td>USR2</td>
-									<td class="bd-t-none u-s-tb">
-										<div class="align-middle image-sm-size"><img style="width: 35px;margin-top: 3%;" class="img-radius align-top m-r-15 rounded-circle blur-up lazyloaded" src="../../assets/images/user_placeholder.png" alt="" data-original-title="" title="">
-											<div class="d-inline-block">
-												<h6>Randy Ortan</h6>
-											</div>
-										</div>
-									</td>
-									<td class="digits">randy@mail.com</td>
-									<td class="digits">Auditorium</td>
-									<td class="digits">12-Dec-2018</td>
-									<td class="digits">12:00 PM</td>
-									<td class="digits">02:00 PM</td>
-									<td class="digits"><span class="label label-success" style="padding: 5px">completed</span></td>
+									<td class="digits">{{x.room_name}}</td>
+									<td class="digits">{{formatBookingDate(x.checkin_datetime)}}</td>
+									<td class="digits">{{formatBookingTime(x.checkin_datetime)}}</td>
+									<td class="digits">{{formatBookingTime(x.checkout_datetime)}}</td>
+									<td class="digits" ng-if="x.status==0"><span class="label label-secondary" style="padding: 5px">upcoming</span></td>
+									<td class="digits" ng-if="x.status==1"><span class="label label-success" style="padding: 5px">completed</span></td>
 
 								</tr>
 								</tbody>
@@ -110,10 +77,4 @@
 <?php require_once ('../partials/footer.php') ?>
 
 <!-- Angular controller for page -->
-<script src="../../controllers/accountsCTRL.js"></script>
-
-<script>
-	$(document).ready(function() {
-		$('#datatable').DataTable( {} );
-	} );
-</script>
+<script src="../../controllers/roomCTRL.js"></script>

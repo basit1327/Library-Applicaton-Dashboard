@@ -98,4 +98,49 @@ iukl.controller("mainCTRL", ['$http', '$scope', function(http, sc){
         }
     };
 
+    sc.formatBookingDate =(date)=>{
+        let dt = new Date(Number(date));
+        if ( dt ){
+            return (dt.getDate()>9?dt.getDate():'0'+dt.getDate()) +'-'+
+                ((dt.getMonth()+1)>9?(dt.getMonth()+1):'0'+(dt.getMonth()+1)) +'-'+
+                dt.getFullYear();
+        }
+        else {
+            return '--';
+        }
+    };
+
+    sc.formatBookingTime =(date)=>{
+        let dt = new Date(Number(date));
+        if ( dt ){
+            let min = dt.getMinutes();
+            if ( min<10 ){
+                min='0'+min;
+            }
+
+
+            if ( dt.getHours()<12 ){
+                let h = dt.getHours();
+                if ( h<10 )
+                    return '0'+dt.getHours() + '-' + min + ' Am';
+                else
+                    return dt.getHours() + '-' + min + ' Am';
+            } else {
+                let hour = dt.getHours();
+                if ( hour==12 ){
+                    return dt.getHours() + '-' + min + ' Pm';
+                } else {
+                    hour = Number(hour)-12;
+                    if ( hour<10 ){
+                        hour='0'+hour
+                    }
+                    return hour+ '-' + min + ' Pm';
+                }
+            }
+        }
+        else {
+            return '--';
+        }
+    };
+
 }]);
