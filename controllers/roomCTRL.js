@@ -93,4 +93,41 @@ iukl.controller("roomCTRL", ['$http', '$scope', function(http,sc){
 		}
 	};
 
+	sc.rejectBooking = async (id)=>{
+		try{
+			let serverResponse = await sendServerRequestWithAuthHeader(apiBaseURL+'room_booking/reject?bookingId='+id,"GET",null,getCookie('sessionId'));
+			if ( serverResponse ){
+				if ( serverResponse.hasOwnProperty('status') ){
+					checkForSessionExpireCall(serverResponse.status);
+					if ( serverResponse.status==200 ){
+						swal(serverResponse.detail);
+						sc.pendingBookingList.forEach((e,i)=>{
+							if ( e.id==id ){
+								sc.pendingBookingList[i].status = 3;
+							}
+						});
+						sc.$digest();
+					}
+					else swal({
+						title: "Oops",
+						text: serverResponse.detail,
+						icon: "error",
+						button: "Close",
+					});
+				}
+				else throw 'Invalid server response';
+			}
+			else throw 'No response by server';
+
+		}
+		catch (e) {
+			swal({
+				title: "Oops",
+				text: "Something not right",
+				icon: "error",
+				button: "Close",
+			});
+		}
+	};
+
 }]);

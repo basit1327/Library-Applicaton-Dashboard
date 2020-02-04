@@ -61,10 +61,12 @@
 									<td class="digits">{{formatBookingTime(x.checkout_datetime)}}</td>
 									<td class="digits" ng-if="x.status==0" ><span class="label label-secondary" style="padding: 5px">pending</span></td>
 									<td class="digits" ng-if="x.status==2" ><span class="label label-primary" style="padding: 5px">timout</span></td>
+									<td class="digits" ng-if="x.status==3" ><span class="label label-warning" style="padding: 5px">rejected</td>
 									<td class="digits" ng-if="x.status==0">
 										<button ng-click="approveBooking(x.id)" class="btn btn-success btn-xs">Approve</button>
+										<button ng-click="rejectBooking(x.id)" class="btn btn-warning btn-xs ml-2 mt-2">Reject</button>
 									</td>
-									<td class="digits" ng-if="x.status==2">
+									<td class="digits" ng-if="x.status==2 || x.status==3">
 										<button class="btn btn-success btn-xs" disabled>Approve</button>
 									</td>
 								</tr>
