@@ -81,6 +81,10 @@
 									<label class="col-form-label pt-0"><span>*</span> Rack/Shelf Number</label>
 									<input class="form-control" ng-model="newCatalog.rack" type="number" required="">
 								</div>
+								<div class="form-group col-md-4">
+									<label class="col-form-label pt-0"> Description</label>
+									<input class="form-control" ng-model="newCatalog.description" type="text" required="">
+								</div>
 							</div>
 							<div class="form-group pull-right">
 								<div class="product-buttons text-center">

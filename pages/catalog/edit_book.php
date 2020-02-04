@@ -87,6 +87,10 @@
 									<br>
 									<img data-toggle="modal" data-original-title="test" data-target="#coverModal" src="../../assets/images/book-placeholder.png" width="30px">
 								</div>
+								<div class="form-group col-md-2">
+									<label class="col-form-label pt-0"> Description</label>
+									<input class="form-control" ng-model="editCatalogBookDetail.description" type="text" required="">
+								</div>
 							</div>
 							<div class="form-group pull-right">
 								<div class="product-buttons text-center">
