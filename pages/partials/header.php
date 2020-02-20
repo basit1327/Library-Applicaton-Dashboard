@@ -29,7 +29,7 @@
     <link rel="stylesheet" type="text/css" href="../../assets/css/prism.css">
 
     <!-- Chartist css -->
-    <link rel="stylesheet" type="text/css" href="../../assets/css/chartist.css">
+    <link rel="stylesheet" type="text/css" href="../../assets/css/hartist.css">
 
     <!-- Bootstrap css-->
     <link rel="stylesheet" type="text/css" href="../../assets/css/bootstrap.css">

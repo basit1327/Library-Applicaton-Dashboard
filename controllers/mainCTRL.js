@@ -80,11 +80,12 @@ iukl.controller("mainCTRL", ['$http', '$scope', function(http, sc){
 
     (checkIsLoggedIn =>{
         let sessionId = getCookie('sessionId');
+        let name = getCookie('name');
         if (!sessionId ){
             window.location.href='../login.php';
         }
+        sc.loggedinUser.name = name;
     })();
-
 
     sc.formatDate =(date)=>{
         let dt = new Date(Number(date));

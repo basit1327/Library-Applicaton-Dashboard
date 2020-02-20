@@ -111,7 +111,7 @@
 		</div>
 		<button ng-click="login()" class="btn btn-primary btn-block btn-lg"> Login </button>
 	</form>
-	<div class="text-center small">IUKL <a href="#">Administrator Dashboard</a></div>
+	<div class="text-center small">IUKL <a href="#">Administrator Dashboard</a>  Powered by <a href="#"> Efsol</a></div>
 </div>
 </body>
 <!-- latest jquery-->

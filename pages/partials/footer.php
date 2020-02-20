@@ -6,6 +6,9 @@
                     <div class="col-md-6 footer-copyright">
                         <p class="mb-0">Copyright 2019 © IUKL All rights reserved.</p>
                     </div>
+                    <div class="col-md-6">
+                        <p class="pull-right mb-0">Powered by Efsol</p>
+                    </div>
                 </div>
             </div>
         </footer>
@@ -42,10 +45,6 @@
 <!-- lazyload js-->
 <script src="../../assets/js/lazysizes.min.js"></script>
 
-<!--copycode js-->
-<script src="../../assets/js/prism/prism.min.js"></script>
-<script src="../../assets/js/clipboard/clipboard.min.js"></script>
-<script src="../../assets/js/custom-card/custom-card.js"></script>
 
 <!--counter js-->
 <script src="../../assets/js/counter/jquery.waypoints.min.js"></script>
